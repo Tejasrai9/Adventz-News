@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="/style.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Feed</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        .article {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+        }
+        .article img {
+            max-width: 100%;
+            height: auto;
+        }
+        .article h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .article p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .article a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        .article a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color: Red;">Zuari Industries News</h1>
+
+    <% articles.forEach(article => { %>
+        <div class="article">
+            <h2><a href="<%= article.link %>" target="_blank"><%= article.title %></a></h2>
+            <% if(article.imageUrl) { %>
+                <img src="<%= article.imageUrl %>" alt="Article Image">
+            <% } %>
+            <p><%= article.description %></p>
+            <p>Published: <%= new Date(article.pubDate).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' }) %></p>
+        </div>
+    <% }) %>
+
+</body>
+</html>
